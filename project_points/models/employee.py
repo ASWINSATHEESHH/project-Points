@@ -6,4 +6,10 @@ class Employee(models.Model):
     points = fields.Float('Points')
 
     def btn_project_point(self):
-        pass
+        return {
+            'name': 'My Projects',
+            'type': 'ir.actions.act_window',
+            'res_model': 'project.points',
+            'view_mode': 'tree,form',
+            'domain': [('users_ids', 'in', self.user_id.id)],
+        }
